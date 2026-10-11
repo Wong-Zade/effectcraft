@@ -1,0 +1,44 @@
+# Builds an unsigned Windows x64 installer (.msi) and portable zip from this fork.
+# Run it by hand: Actions tab > "Build Windows (unsigned)" > Run workflow.
+# When it finishes, download the "windows-x64" artifact from the run page.
+name: Build Windows (unsigned)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-x64:
+    runs-on: windows-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Rust toolchain
+        shell: pwsh
+        run: |
+          rustup toolchain install stable --profile minimal --target x86_64-pc-windows-msvc
+          rustup default stable
+          rustc --version
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Install WiX
+        shell: pwsh
+        run: |
+          dotnet tool install --global wix --version 5.0.2
+          "$env:USERPROFILE\.dotnet\tools" | Out-File -FilePath $env:GITHUB_PATH -Append -Encoding utf8
+
+      # packaging/windows/package.ps1 builds the app and CLI, then makes the MSI and portable
+      # zip in dist/release. Without signing secrets, sign.ps1 just warns and leaves files unsigned.
+      - name: Build and package
+        shell: pwsh
+        run: pwsh packaging/windows/package.ps1 -Arch x64
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-x64
+          path: dist/release/*
+          if-no-files-found: error

@@ -1255,6 +1255,12 @@ pub fn draw_group_chrome(ui: &mut egui::Ui, g: &Group, t: &Tokens, reg: &mut cra
                     label_x = dx + 16.0;
                 }
             }
+            if is_active {
+                // Photon-style active tab: a dark rounded chip with a hairline border.
+                let pill = Rect::from_min_max(pos2(tab.min.x + 1.0, strip.min.y + 4.0), pos2(tab.max.x - 1.0, strip.max.y - 4.0));
+                painter.rect_filled(pill, t.radius, t.header_bg);
+                painter.rect_stroke(pill, t.radius, Stroke::new(1.0, t.field_border), egui::StrokeKind::Inside);
+            }
             let label_w = galley.size().x;
             let col = if is_active || resp.hovered() { t.tab_text_active } else { t.tab_text };
             painter.galley_with_override_text_color(pos2(label_x, text_y - galley.size().y / 2.0), galley, col);
@@ -1266,8 +1272,6 @@ pub fn draw_group_chrome(ui: &mut egui::Ui, g: &Group, t: &Tokens, reg: &mut cra
                 for dy in [-3.5, 0.0, 3.5] {
                     painter.line_segment([pos2(mr.min.x, mr.center().y + dy), pos2(mr.max.x, mr.center().y + dy)], Stroke::new(1.5, mc));
                 }
-                let uy = strip.min.y + 23.0;
-                painter.line_segment([pos2(label_x, uy), pos2(mr.max.x, uy)], Stroke::new(1.0, t.tab_text_active));
                 crate::widgets::focus_outline(ui, &mresp, t);
                 if mresp.clicked() {
                     out.actions.push(DockAction::PanelMenu(*p, mr.left_bottom()));
