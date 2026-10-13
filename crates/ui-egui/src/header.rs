@@ -582,7 +582,9 @@ pub fn paint_logo(p: &egui::Painter, r: Rect) {
     });
     if let Some(t) = tex {
         // The mark is light gray: darken it on light themes so it stays visible.
-        let tint = if ctx.style().visuals.dark_mode { Color32::WHITE } else { Color32::from_gray(40) };
+        let bg = ctx.global_style().visuals.panel_fill;
+        let light_theme = bg.r() as u32 + bg.g() as u32 + bg.b() as u32 > 384;
+        let tint = if light_theme { Color32::from_gray(40) } else { Color32::WHITE };
         p.image(t.id(), r, Rect::from_min_max(pos2(0.0, 0.0), pos2(1.0, 1.0)), tint);
     }
 }
