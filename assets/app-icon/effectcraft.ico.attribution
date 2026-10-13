@@ -1,8 +1,8 @@
 asset:        effectcraft.ico
-title:        EffectCraft Windows app icon
-author:       EffectCraft contributors (drawing by the project owner in ArtCraft)
-source:       original work
-license:      MIT OR Apache-2.0
+title:        WongsEffect Windows app icon
+author:       Wongs
+source:       original work, supplied by the project owner (the W icon, traced from assets/app-icon/source.png)
+license:      brand mark of the project owner; not covered by the project's open-source license
 license-file: assets/app-icon/LICENSE.txt
-added:        2026-10-02 by EffectCraft contributors (Claude agent, app icon)
-notes:        Rendered from effectcraft.svg (16-256 px) with resvg and packed by cargo xtask ico (packaging/icons.sh).
+added:        2026-10-13 by the project owner (W app icon)
+notes:        Generated from effectcraft.svg (a potrace vector of source.png) by the same recipe as packaging/icons.sh; see assets/app-icon/README.md.

@@ -101,7 +101,7 @@ fn page_ui(app: &mut EffectcraftApp, ui: &mut egui::Ui, page: &Page, cur: &Value
             Item::Setting { key, label, kind, live } => {
                 let v = get(key);
                 let id = format!("settings.{key}");
-                let tip = (!live).then_some("Stored, but not used by EffectCraft yet");
+                let tip = (!live).then_some("Stored, but not used by WongsEffect yet");
                 let mut resp: Option<egui::Response> = None;
                 match kind {
                     Kind::Bool => {
@@ -212,7 +212,7 @@ fn page_ui(app: &mut EffectcraftApp, ui: &mut egui::Ui, page: &Page, cur: &Value
     }
 }
 
-/// A small EffectCraft window painted with theme `kind`'s tokens: the Tools bar, the Project
+/// A small WongsEffect window painted with theme `kind`'s tokens: the Tools bar, the Project
 /// panel, the Composition panel, the Preview and Properties column and the Timeline with its
 /// layer bars.
 fn theme_preview(ui: &mut egui::Ui, kind: ThemeKind, width: f32) {
@@ -223,7 +223,7 @@ fn theme_preview(ui: &mut egui::Ui, kind: ThemeKind, width: f32) {
     painter.rect_filled(rect, 3.0, p.app_bg);
     let bar = Rect::from_min_size(rect.min, vec2(rect.width(), 13.0));
     painter.rect_filled(bar, 0.0, p.header_bg);
-    // The brand mark, the tools (the Selection tool is active) and the Discord pill.
+    // The brand mark, the tools (the Selection tool is active) and the header buttons.
     painter.rect_filled(Rect::from_min_size(bar.min + vec2(4.0, 3.0), vec2(7.0, 7.0)), 2.0, p.accent);
     for i in 0..7 {
         let c = if i == 0 { p.accent } else { p.icon };
@@ -736,7 +736,7 @@ pub fn recovery(app: &mut EffectcraftApp, ctx: &egui::Context, t: &Tokens) {
     };
     let mut choice: Option<&str> = None;
     super::dialogs::modal(ctx, "Recover Project", vec2(560.0, 230.0), t, |ui| {
-        ui.label(tr("EffectCraft didn't quit normally last time."));
+        ui.label(tr("WongsEffect didn't quit normally last time."));
         ui.add_space(6.0);
         if let Some(p) = &r.project {
             ui.label(tr_args("Project: {}", &[&p]));

@@ -1,0 +1,8 @@
+asset:        source.png
+title:        WongsEffect app icon, source image
+author:       Wongs
+source:       original work, supplied by the project owner (503 px PNG: black rounded tile, white badge, W)
+license:      brand mark of the project owner; not covered by the project's open-source license
+license-file: assets/app-icon/LICENSE.txt
+added:        2026-10-13 by the project owner (W app icon)
+notes:        The image effectcraft.svg and every other file in this directory were made from. Kept so the icons can be regenerated.

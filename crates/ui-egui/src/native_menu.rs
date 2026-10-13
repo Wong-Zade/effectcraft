@@ -57,7 +57,7 @@ pub struct NativeItem {
     pub command: String,
     #[serde(skip_serializing_if = "Value::is_null")]
     pub params: Value,
-    /// The shortcut in EffectCraft notation (`Cmd+Shift+S`).
+    /// The shortcut in WongsEffect notation (`Cmd+Shift+S`).
     pub shortcut: Option<String>,
     /// The menu key equivalent in `muda` accelerator notation, when the shortcut can be one (see
     /// [`accelerator`]).
@@ -228,7 +228,7 @@ pub fn build(app: &EffectcraftApp) -> NativeMenu {
     NativeMenu { menus }
 }
 
-/// The `muda` accelerator for an EffectCraft shortcut, or `None` when it must stay a plain
+/// The `muda` accelerator for a WongsEffect shortcut, or `None` when it must stay a plain
 /// keyboard shortcut. Only shortcuts with Cmd or Ctrl (and function keys) become menu key
 /// equivalents: a single-key shortcut (`V`, `Space`, `U`) or an Alt/Shift-only one would be
 /// swallowed by the menu while typing into a text field. Those still work through the
@@ -442,7 +442,7 @@ mod tests {
         }
         let mut translated = vec![];
         labels(&build(&app).menus, &mut translated);
-        assert_eq!(translated, ["Служби", "Приховати EffectCraft", "Приховати решту", "Показати все"]);
+        assert_eq!(translated, ["Служби", "Приховати WongsEffect", "Приховати решту", "Показати все"]);
     }
 
     #[test]

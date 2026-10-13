@@ -1,4 +1,4 @@
-//! The EffectCraft egui frontend (swappable): docking panels, the Composition viewer, the
+//! The WongsEffect egui frontend (swappable): docking panels, the Composition viewer, the
 //! Timeline with property twirl-downs and keyframes, Effect Controls, Effects & Presets, Preview,
 //! Info, Character/Paragraph/Align, menus, dialogs and the control channel.
 //!
@@ -105,7 +105,7 @@ pub type SystemThemeFn = Box<dyn Fn(&egui::Context) -> Option<egui::Theme>>;
 pub enum FileDialog {
     /// Files to open or import with these extensions; several when `many`.
     Open { exts: Vec<String>, many: bool },
-    /// An EffectCraft project to open.
+    /// A WongsEffect project to open.
     OpenProject,
     /// A folder.
     Folder,

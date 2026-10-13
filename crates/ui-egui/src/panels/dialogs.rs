@@ -205,7 +205,7 @@ fn about(app: &mut EffectcraftApp, ctx: &egui::Context, t: &Tokens) {
     let mut close = false;
     let mut cmd: Option<&str> = None;
     let tab_id = egui::Id::new("about_tab");
-    modal(ctx, "About EffectCraft", vec2(680.0, 520.0), t, |ui| {
+    modal(ctx, "About WongsEffect", vec2(680.0, 520.0), t, |ui| {
         let mut tab = ui.data_mut(|d| d.get_temp::<usize>(tab_id)).unwrap_or(0);
         ui.horizontal(|ui| {
             for (i, (label, id)) in ABOUT_TABS.iter().enumerate() {
@@ -256,9 +256,9 @@ fn about(app: &mut EffectcraftApp, ctx: &egui::Context, t: &Tokens) {
 fn about_main(app: &mut EffectcraftApp, ui: &mut egui::Ui, t: &Tokens, cmd: &mut Option<&'static str>) {
     let (r, _) = ui.allocate_exact_size(vec2(ui.available_width(), 96.0), Sense::hover());
     let p = ui.painter();
-    p.rect_filled(r, 10.0, Color32::from_rgb(0x1b, 0x22, 0x3c));
+    p.rect_filled(r, 10.0, Color32::from_rgb(0x1d, 0x18, 0x30));
     crate::header::paint_logo(p, Rect::from_min_size(r.min + vec2(18.0, 20.0), vec2(56.0, 56.0)));
-    p.text(r.min + vec2(90.0, 34.0), Align2::LEFT_CENTER, "EffectCraft", Tokens::semibold(24.0), Color32::WHITE);
+    p.text(r.min + vec2(90.0, 34.0), Align2::LEFT_CENTER, "WongsEffect", Tokens::semibold(24.0), Color32::WHITE);
     p.text(
         r.min + vec2(90.0, 62.0),
         Align2::LEFT_CENTER,
@@ -267,14 +267,10 @@ fn about_main(app: &mut EffectcraftApp, ui: &mut egui::Ui, t: &Tokens, cmd: &mut
         t.text_dim,
     );
     ui.add_space(12.0);
-    ui.label(tr("A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps."));
+    ui.label(tr("A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. A fork of the open-source EffectCraft project."));
     ui.add_space(14.0);
-    let links: [(Icon, &str, &str, &'static str); 4] = [
-        (Icon::Chat, "Join the ArtCraft Discord", effectcraft_engine::links::DISCORD, "help.discord"),
-        (Icon::Globe, "ArtCraft website", effectcraft_engine::links::WEBSITE, "help.website"),
-        (Icon::Sparkle, "EffectCraft home page", effectcraft_engine::links::APP_PAGE, "help.appPage"),
-        (Icon::Code, "Source code on GitHub", effectcraft_engine::links::GITHUB, "help.github"),
-    ];
+    let links: [(Icon, &str, &str, &'static str); 1] =
+        [(Icon::Code, "Source code on GitHub", effectcraft_engine::links::GITHUB, "help.github")];
     for (icon, label, url, c) in links {
         let (r, resp) = ui.allocate_exact_size(vec2(ui.available_width(), 30.0), Sense::click());
         let p = ui.painter();

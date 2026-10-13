@@ -1,13 +1,8 @@
-EffectCraft app icon (effectcraft.svg, effectcraft-small.svg and every file derived from them in
+WongsEffect app icon (effectcraft.svg, effectcraft-small.svg and every file derived from them in
 this directory: effectcraft-1024.png, effectcraft-macos-512.png, effectcraft.icns, effectcraft.ico,
-hicolor/), and the web favicon apps/effectcraft-web/web/favicon.svg.
+hicolor/, source.png), and the web favicon apps/effectcraft-web/web/favicon.svg.
 
-Original artwork made for this project by the project owner in ArtCraft, then vectorised (no
-third-party material). Licensed like the rest of EffectCraft, under either of
+The W icon is the mark of the project owner (Wongs). It is not covered by the project's MIT OR
+Apache-2.0 license, and no license to reuse it is granted unless the owner says so.
 
-  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
-  * MIT license (https://opensource.org/licenses/MIT)
-
-at your option.
-
-Regenerate the derived files with packaging/icons.sh.
+Regenerate the derived files from source.png as described in README.md.

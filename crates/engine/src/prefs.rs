@@ -92,7 +92,7 @@ macro_rules! page {
 }
 
 page!(General {
-    /// Interface language: `system` (the operating system's, where EffectCraft has it, else
+    /// Interface language: `system` (the operating system's, where WongsEffect has it, else
     /// English), or a language code from `LANGUAGES`.
     language: String = "system".into(),
     /// Levels of Undo (1–99).
@@ -1088,7 +1088,7 @@ pub fn pages() -> Vec<Page> {
                 s("general.expressionPickWhipCompact", "Expression Pick Whip Writes Compact English", B, true),
                 s("general.createSplitLayersAbove", "Create Split Layers Above Original Layer", B, true),
                 s("general.useSystemColorPicker", "Use System Color Picker", B, false),
-                Note("EffectCraft always uses its own colour picker (the same on every platform and the web)."),
+                Note("WongsEffect always uses its own colour picker (the same on every platform and the web)."),
             ],
         },
         Page {
@@ -1100,7 +1100,7 @@ pub fn pages() -> Vec<Page> {
                 s("startup.offerCrashRecovery", "Offer to Open the Latest Auto-Save After a Crash", B, true),
                 s("startup.windowGraphics", "Window Graphics", Kind::Choice(WINDOW_GRAPHICS), true),
                 Note(
-                    "Window Graphics applies from the next launch. When the graphics driver stops EffectCraft as its window opens, the next launch switches to OpenGL.",
+                    "Window Graphics applies from the next launch. When the graphics driver stops WongsEffect as its window opens, the next launch switches to OpenGL.",
                 ),
                 Section("Repair"),
                 Button { label: "Reset Settings", command: "prefs.reset", params: "{}" },
